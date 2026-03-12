@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset="utf-8">
+<title>HealJai Telemedicine</title>
+
+<script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+
+<style>
+
+body{
+font-family: Arial;
+background:#f6f9f8;
+padding:20px;
+}
+
+.card{
+background:white;
+border-radius:14px;
+padding:20px;
+box-shadow:0 4px 20px rgba(0,0,0,0.05);
+}
+
+h2{
+color:#3a7d6b;
+}
+
+input,select,textarea{
+width:100%;
+padding:12px;
+margin-top:8px;
+margin-bottom:16px;
+border-radius:8px;
+border:1px solid #ddd;
+}
+
+button{
+width:100%;
+padding:14px;
+background:#63c7a6;
+border:none;
+border-radius:10px;
+color:white;
+font-size:16px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="card">
+
+<h2>จองปรึกษานักจิตวิทยา</h2>
+
+<input id="name" placeholder="ชื่อ">
+
+<input id="phone" placeholder="เบอร์โทร">
+
+<select id="psychologist">
+<option>นักจิตวิทยา A</option>
+<option>นักจิตวิทยา B</option>
+<option>นักจิตวิทยา C</option>
+</select>
+
+<input type="date" id="date">
+
+<input type="time" id="time">
+
+<textarea id="symptom" placeholder="อาการหรือสิ่งที่อยากปรึกษา"></textarea>
+
+<button onclick="book()">จองคิว</button>
+
+</div>
+
+<script>
+
+function book(){
+
+let data={
+
+name:document.getElementById("name").value,
+phone:document.getElementById("phone").value,
+psychologist:document.getElementById("psychologist").value,
+date:document.getElementById("date").value,
+time:document.getElementById("time").value,
+symptom:document.getElementById("symptom").value
+
+};
+
+fetch("https://script.google.com/macros/s/AKfycbybWk-l3QvAqHlFkVYMrweEfbyT3zpKMTbVHUlvUtYeJDMhoae-l3bHFt1OgUGX70j4LA/exec",{
+
+method:"POST",
+body:JSON.stringify(data)
+
+})
+
+alert("จองสำเร็จ");
+
+liff.closeWindow();
+
+}
+
+</script>
+
+</body>
+</html>
